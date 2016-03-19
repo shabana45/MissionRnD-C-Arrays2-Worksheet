@@ -14,7 +14,16 @@ NOTES:
 There are better ways of solving the problem than a brute-force solution which is of O(n^2)
 complexity .
 */
-
 int findSingleOccurenceNumber(int *A, int len) {
-	return -1;
+	if (A == '\0')
+		return -1;
+	else{
+		int cnt[30] = { 0 };
+		for (int i = 0; i < len; i++){
+			cnt[A[i]]++;
+		}
+		for (int i = 0; i < 30; i++)
+		if (cnt[i] == 1)
+			return i;
+	}
 }

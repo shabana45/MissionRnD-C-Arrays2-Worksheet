@@ -23,7 +23,33 @@ struct transaction {
 	char date[11];
 	char description[20];
 };
-
+int compare1(char* x, char *date);
 struct transaction * sortedArraysCommonElements(struct transaction *A, int ALen, struct transaction *B, int BLen) {
+	if (A==NULL ||B==NULL)
 	return NULL;
+	else
+	{
+		int i, j;
+		for (i = 0; i < ALen;i++)
+		for (j = 0; i < BLen;j++)
+		if (compare1(A[i].date, B[j].date) == 0)
+			return A;
+		else
+			return NULL;
+	}
+
+}
+int compare1(char* x, char *date)
+{
+	int day1, day2, month1, month2, year1, year2;
+	day1 = (date[0] - '0') * 10 + (date[1] - '0');
+	month1 = (date[3] - '0') * 10 + (date[4] - '0');
+	year1 = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + (date[9] - '0');
+	day2 = (x[0] - '0') * 10 + (x[1] - '0');
+	month2 = (x[3] - '0') * 10 + (x[4] - '0');
+	year2 = (x[6] - '0') * 1000 + (x[7] - '0') * 100 + (x[8] - '0') * 10 + (x[9] - '0');
+	if ((day1 == day2) && (month1 == month2) && (year1 == year2))
+		return 0;
+	else
+		return -1;
 }

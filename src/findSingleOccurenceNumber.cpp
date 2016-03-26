@@ -14,16 +14,22 @@ NOTES:
 There are better ways of solving the problem than a brute-force solution which is of O(n^2)
 complexity .
 */
+struct ele
+{
+	int count, index, val;
+};
 int findSingleOccurenceNumber(int *A, int len) {
 	if (A == '\0')
 		return -1;
-	else{
-		int cnt[30] = { 0 };
-		for (int i = 0; i < len; i++){
-			cnt[A[i]]++;
-		}
-		for (int i = 0; i < 30; i++)
-		if (cnt[i] == 1)
-			return i;
+	int a0, a1, a2;
+	a0 = a1 = a2 = 0;
+	for (int i = 0; i < len; ++i) {
+		int r0, r1, r2;
+		int x = A[i];
+		r0 = a0&x; r1 = a1&x; r2 = a2&x;
+		a0 = (a0^r0) | r2;
+		a1 = (a1^r1) | (x^r1^r2);
+		a2 = (a2^r2) | r1;
 	}
-}
+	return a1;
+	}

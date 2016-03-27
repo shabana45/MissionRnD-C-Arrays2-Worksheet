@@ -31,7 +31,7 @@ struct transaction * sortedArraysCommonElements(struct transaction *A, int ALen,
 	{
 		int i, j;
 		for (i = 0; i < ALen;i++)
-		for (j = 0; i < BLen;j++)
+		for (j = 0; j < BLen;j++)
 		if (compare1(A[i].date, B[j].date) == 0)
 			return A;
 		else

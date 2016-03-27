@@ -38,7 +38,6 @@ struct transaction * mergeSortedArrays(struct transaction *A, int ALen, struct t
 		{
 			for (int j = i; j < n; j++){
 				if (cmp(C[i].date, C[j].date) == 1){
-					printf("X");
 					charSwap(&C[i], &C[j]);
 				}
 			}
